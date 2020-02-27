@@ -41,29 +41,32 @@ namespace GestBanque
                 Datedernierretrait = DateTime.Now,
                 Titulaire = p
             };
+
+
             
             e.Depot(500);
             e.Retrait(250);
             c.Depot(1000);
-            c.Depot(500);
-            c1.Retrait(250);
-            c2.Retrait(500);
+            c1.Retrait(300);
 
             Banque b = new Banque();
             b.Nom = "BNP PARIBAS";
             b.ajouter(c);
             b.ajouter(c1);
-            b.ajouter(c2);
             b.ajouter(e);
-            Console.WriteLine($"{p.Prenom} {p.Nom} a {b.AvoirDesComptes(p)} sur ses comptes");
 
-           
-
-
-
-
+            Console.WriteLine(e.Solde);
+            e.AppliquerInteret();
+            Console.WriteLine(e.Solde);
             Console.WriteLine(c.Solde);
-            
+            c.AppliquerInteret();
+            Console.WriteLine(c.Solde);
+            Console.WriteLine(c1.Solde);
+            c1.AppliquerInteret();
+            Console.WriteLine(c1.Solde);
+
+
+
         }
     }
 }

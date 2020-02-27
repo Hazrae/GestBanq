@@ -4,11 +4,12 @@ using System.Text;
 
 namespace Models
 {
-    public class Compte
+    public abstract class Compte
     {
         private string _numero;
         private double _solde;
         private Personne _titulaire;
+        protected abstract double CalculInteret();
 
         public string Numero
         {
@@ -44,7 +45,12 @@ namespace Models
                 _titulaire = value;
             }
         }
-               
+
+        public static double operator +(double tot, Compte c)
+        {
+            return ((tot < 0) ? 0 : tot) + ((c.Solde < 0) ? 0 : c.Solde);
+        }
+
         public virtual void Retrait(double Montant)
         {
             if (Montant <= 0) 
@@ -71,10 +77,13 @@ namespace Models
             Solde += Montant;
         }
 
-     
-        public static double operator +(double tot, Compte c)
+        public void AppliquerInteret()
         {
-            return ((tot < 0) ? 0 : tot) + ((c.Solde < 0) ? 0 : c.Solde);
+            Solde += CalculInteret();
         }
+
+
+     
+
     }
 }
