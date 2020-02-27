@@ -53,7 +53,17 @@ namespace Models
             Solde -= Montant;
         }
 
-         public void Depot(double Montant)
+        public virtual void Retrait(double Montant, double LigneDeCredit)
+        {
+            if ((Solde - Montant) < -LigneDeCredit)
+                return; // à remplacer éventuellement par une erreur
+            if (Montant <= 0)
+                return;
+            ; // à remplacer éventuellement par une erreur
+            Solde -= Montant;
+        }
+
+        public void Depot(double Montant)
         {
             if (Montant <= 0)
                 return; // à remplacer éventuellement par une erreur

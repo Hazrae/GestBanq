@@ -29,8 +29,7 @@ namespace Models
                     return; // à remplacer éventuellement par une erreur
 
                 base.Retrait(Montant);
-                Datedernierretrait = DateTime.Now;
-          
+                Datedernierretrait = DateTime.Now;  
         }
     }
 }

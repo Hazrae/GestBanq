@@ -28,17 +28,7 @@ namespace Models
        
         public override void Retrait(double Montant)
         {
-            if ((Solde - Montant) < -LigneDeCredit)
-            {
-                return; // à remplacer éventuellement par une erreur
-            }
-            else
-            {
-                if (Montant <= 0)
-                    return; // à remplacer éventuellement par une erreur
-
-                base.Retrait(Montant);
-            }
+                base.Retrait(Montant,LigneDeCredit);
         }
     }
 
