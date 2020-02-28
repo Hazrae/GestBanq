@@ -42,8 +42,10 @@ namespace GestBanque
                 Titulaire = p
             };
 
+            IBanker bank = new Courant();
+            ICustomer customer = new Epargne();
 
-            
+                        
             e.Depot(500);
             e.Retrait(250);
             c.Depot(1000);

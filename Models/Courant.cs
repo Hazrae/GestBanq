@@ -33,11 +33,12 @@ namespace Models
 
         protected override double CalculInteret()
         {
-            if (Solde > 0)
+            /*if (Solde > 0)
                 return Solde * 0.03;
             else
-                return Solde * 0.0975;
-          
+                return Solde * 0.0975;*/
+
+            return Solde * Solde > 0 ? 0.03 : 0.0975;
 
         }
     }

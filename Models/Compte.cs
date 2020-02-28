@@ -4,11 +4,16 @@ using System.Text;
 
 namespace Models
 {
-    public abstract class Compte
+    public abstract class Compte : ICustomer, IBanker
     {
+        //***VARIABLES***
+
         private string _numero;
         private double _solde;
         private Personne _titulaire;
+       
+
+        //***METHODES ABSTRAITES***
         protected abstract double CalculInteret();
 
         public string Numero
