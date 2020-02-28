@@ -16,13 +16,24 @@ namespace Models
         //***METHODES ABSTRAITES***
         protected abstract double CalculInteret();
 
+        public Compte(string num, Personne titu)
+        {
+            Numero = num;
+            Titulaire = titu;
+        }
+
+        public Compte(string num, Personne titu, double solde) :this(num,titu)
+        {
+            Solde = solde;
+        }
+
         public string Numero
         {
             get
             {
                 return _numero;
             }
-            set
+            private set
             {
                 _numero = value;
             }
@@ -45,7 +56,7 @@ namespace Models
             {
                 return _titulaire;
             }
-            set
+            private set
             {
                 _titulaire = value;
             }

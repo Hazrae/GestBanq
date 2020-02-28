@@ -9,10 +9,15 @@ namespace Models
         public string Nom { get; set; }
         
         private Dictionary<string, Compte> _comptes;
-      
+
+        public Banque(string nom)
+        {
+            Nom = nom;
+        }
+
         public Dictionary<string, Compte> Comptes
         {
-            //retourne le dico avec les compte ou le crée
+            //retourne le dico avec les comptes ou le crée
             get
             {
                 return _comptes ??= new Dictionary<string, Compte>();
@@ -28,13 +33,13 @@ namespace Models
             }
         }
 
-        public void ajouter(Compte Compte)
+        public void Ajouter(Compte Compte)
         {
             Comptes.Add(Compte.Numero, Compte);
            //ou  Comptes[Compte.Numero] = Compte;
         }
 
-        public void supprimer(string Numero)
+        public void Supprimer(string Numero)
         {
             if (Comptes[Numero] is null)
                 return; // erreur à gérer plus tard

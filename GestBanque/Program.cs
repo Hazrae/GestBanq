@@ -9,53 +9,31 @@ namespace GestBanque
         static void Main(string[] args)
 
         {
-            Personne p = new Personne()
-            {
-                Nom = "Norris",
-                Prenom = "Chuck",
-                DateNaiss = new DateTime(1904, 3, 10)
-            };
+            Personne p = new Personne("Norris","Chuck", new DateTime(1904, 3, 10));
 
-            Courant c = new Courant()
-            {
-                Numero = "000001",
-                LigneDeCredit = 500,
-                Titulaire = p
-            };
-            Courant c1 = new Courant()
-            {
-                Numero = "000002",
-                LigneDeCredit = 500,
-                Titulaire = p
-            };
-            Courant c2 = new Courant()
-            { 
-                Numero = "000003",
-                LigneDeCredit = 500,
-                Titulaire = p
-            };
+            Courant c = new Courant("000001",500,p);
+            Courant c1 = new Courant("000002", 500, p);
 
-            Epargne e = new Epargne()
-            {
-                Numero = "000004",
-                Datedernierretrait = DateTime.Now,
-                Titulaire = p
-            };
+            Courant c2 = new Courant("000003", 500, p);
 
-            IBanker bank = new Courant();
-            ICustomer customer = new Epargne();
+            Epargne e = new Epargne("000004", p);
+         
+
+            //IBanker bank = new Courant("000005",750,p);
+           // ICustomer customer = new Epargne("000006",p);
 
                         
             e.Depot(500);
             e.Retrait(250);
             c.Depot(1000);
             c1.Retrait(300);
+            c2.AppliquerInteret();
 
-            Banque b = new Banque();
-            b.Nom = "BNP PARIBAS";
-            b.ajouter(c);
-            b.ajouter(c1);
-            b.ajouter(e);
+            Banque b = new Banque("BNP PARIBAS");
+            
+            b.Ajouter(c);
+            b.Ajouter(c1);
+            b.Ajouter(e);
 
             Console.WriteLine(e.Solde);
             e.AppliquerInteret();

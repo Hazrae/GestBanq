@@ -8,6 +8,20 @@ namespace Models
     {
         private DateTime _datedernierretrait;
 
+        public Epargne(string num,Personne titu) : base (num,titu)
+        {
+
+        }
+        public Epargne(string num, Personne titu, double solde) : base(num, titu,solde)
+        {
+
+        }
+
+        public Epargne(DateTime date, string num, Personne titu, double solde) : base(num, titu, solde)
+        {
+            Datedernierretrait = date;
+        }
+
         public DateTime Datedernierretrait
         {
             get
