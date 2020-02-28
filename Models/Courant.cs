@@ -38,7 +38,7 @@ namespace Models
             private set
             {
                 if (_ligneDeCredit < 0)
-                    return; //à remplacer éventuellement par une erreur
+                    throw new InvalidOperationException("Ligne de crédit doit être >0");
 
                _ligneDeCredit = value;
             }

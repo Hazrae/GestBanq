@@ -17,17 +17,24 @@ namespace GestBanque
             Courant c2 = new Courant("000003", 500, p);
 
             Epargne e = new Epargne("000004", p);
-         
+
 
             //IBanker bank = new Courant("000005",750,p);
-           // ICustomer customer = new Epargne("000006",p);
+            // ICustomer customer = new Epargne("000006",p);
 
-                        
-            e.Depot(500);
-            e.Retrait(250);
-            c.Depot(1000);
-            c1.Retrait(300);
-            c2.AppliquerInteret();
+            try
+            {
+                e.Depot(500);
+                e.Retrait(250);
+                c.Depot(1000);
+                c1.Retrait(300);
+                c2.AppliquerInteret();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.GetType());
+                Console.WriteLine(ex.Message);
+            }
 
             Banque b = new Banque("BNP PARIBAS");
             

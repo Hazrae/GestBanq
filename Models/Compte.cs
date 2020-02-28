@@ -78,7 +78,7 @@ namespace Models
         public virtual void Retrait(double Montant, double LigneDeCredit)
         {
             if ((Solde - Montant) < -LigneDeCredit)
-                return; // à remplacer éventuellement par une erreur
+                throw new SoldeInsuffisantException();
             if (Montant <= 0)
                 return;
             ; // à remplacer éventuellement par une erreur
@@ -88,7 +88,7 @@ namespace Models
         public void Depot(double Montant)
         {
             if (Montant <= 0)
-                return; // à remplacer éventuellement par une erreur
+                throw new ArgumentOutOfRangeException(nameof(Montant));
 
             Solde += Montant;
         }
